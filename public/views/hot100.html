@@ -1,0 +1,19 @@
+<h2>Billboard Hot 100</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>This Week</th>
+            <th>Last Week</th>
+            <th>Artist</th>
+            <th>Song</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="song in songs">
+            <td>{{song.rank_this_week[0]}}</td>
+            <td>{{song.rank_last_week[0]}}</td>
+            <td>{{song.artist[0]}}</td>
+            <td>{{song.chart_item_title[0]}}</td>
+        </tr>
+    </tbody>
+</table>

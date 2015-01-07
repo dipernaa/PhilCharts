@@ -1,7 +1,8 @@
+var parseString = require('xml2js').parseString;
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var express = require('express');
-//var request = require('request'); //Used for external http requests
+var request = require('request'); //Used for external http requests
 //var mysql = require('mysql');
 //var qr = require('qr-image');
 var path = require('path');
@@ -27,6 +28,18 @@ app.get('/', function (req, res) {
     res.render('index.html');
 });
 
+app.get('/getHot100', function(req, res) {
+    request('http://www.billboard.com/rss/charts/hot-100', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            parseString(body, function (err, result) {
+                res.send(result.rss.channel[0].item);
+            });
+        }else {
+            res.send('error');
+        }
+    })
+})
+
 app.listen(process.env.PORT || 3000, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+})
