@@ -43,7 +43,7 @@ app.get('/getHot100', function(req, res) {
 app.get('/getTop40', function(req, res) {
     request('http://usatoday30.usatoday.com/life/music/airplay/Top40.js', function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            res.send(JSON.parse(body.replace(/formatData = /g, '').replace(/;/g, '')));
+            res.send(JSON.parse(body.replace(/formatData = /g, '').replace(/;/g, '').replace(/&amp/g, '&')));
         }else {
             res.send('error');
         }
