@@ -40,6 +40,16 @@ app.get('/getHot100', function(req, res) {
     })
 })
 
+app.get('/getTop40', function(req, res) {
+    request('http://usatoday30.usatoday.com/life/music/airplay/Top40.js', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            res.send(JSON.parse(body.replace(/formatData = /g, '').replace(/;/g, '')));
+        }else {
+            res.send('error');
+        }
+    })
+})
+
 app.listen(process.env.PORT || 3000, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 })

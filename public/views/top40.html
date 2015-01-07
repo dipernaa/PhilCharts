@@ -1,0 +1,19 @@
+<h2>USA Today Top 40 (30?)</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>This Week</th>
+            <th>Last Week</th>
+            <th>Artist</th>
+            <th>Song</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="song in songs">
+            <td>{{song[0]}}</td>
+            <td>{{song[1]}}</td>
+            <td>{{song[2]}}</td>
+            <td>{{song[3]}}</td>
+        </tr>
+    </tbody>
+</table>
