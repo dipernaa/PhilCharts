@@ -11,7 +11,8 @@
     <tbody>
         <tr ng-repeat="song in songs">
             <td>{{song.rank_this_week[0]}}</td>
-            <td>{{song.rank_last_week[0]}}</td>
+            <td ng-if="song.rank_last_week[0] !== '0'">{{song.rank_last_week[0]}}</td>
+            <td ng-if="song.rank_last_week[0] === '0'">-</td>
             <td>{{song.artist[0]}}</td>
             <td>{{song.chart_item_title[0]}}</td>
         </tr>
