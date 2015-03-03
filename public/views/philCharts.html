@@ -1,0 +1,20 @@
+<h2>Phil Charts</h2>
+<select id="chart-list" class="form-control chart-select" ng-options="chart.name for chart in chartList" ng-model="selectedChart" ng-change="getChart()"></select>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>This Week</th>
+            <th>Last Week</th>
+            <th>Artist</th>
+            <th>Song</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="song in songs">
+            <td>dainty</td>
+            <td>fingers</td>
+            <td>{{song[1]}}</td>
+            <td>{{song[0]}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -6,6 +6,10 @@ myApp.config(function($routeProvider) {
             templateUrl: '../views/home.html',
             controller: 'MainCtrl'
         }).
+        when('/philCharts', {
+            templateUrl: '../views/philCharts.html',
+            controller: 'PhilChartsCtrl'
+        }).
         when('/hot100', {
             templateUrl: '../views/hot100.html',
             controller: 'Hot100Ctrl'
@@ -17,4 +21,4 @@ myApp.config(function($routeProvider) {
         otherwise({
             redirectTo: '/'
         });
-})
+});
