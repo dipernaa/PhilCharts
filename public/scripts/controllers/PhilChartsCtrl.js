@@ -16,7 +16,7 @@ angular.module('myApp').controller('PhilChartsCtrl', function($scope, $http) {
     $scope.getChart = function() {
         $http.get('../PhilCharts/' + $scope.selectedChart.name).
             success(function(data, status, headers, config) {
-                $scope.songs = data.splice(1, data.length);
+                $scope.songs = data;
             }).
             error(function(data, status, headers, config) {
                 alert('error');

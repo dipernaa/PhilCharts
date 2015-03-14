@@ -17,10 +17,6 @@ app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-/**
- * Displays the main page
- * @return main page of webapp
- */
 app.get('/', function (req, res) {
     res.render('index.html');
 });
@@ -30,7 +26,20 @@ app.get('/PhilCharts/:chart', function(req, res) {
         if(err) {
             res.send(err);
         }else {
-            res.send(result);
+            result = result.splice(1, result.length);
+            var count  = Object.keys(result[0]).length;
+            var i, goodData = [];
+            for(i = 0; i < result.length; i = i + 1) {
+                if(parseInt(result[i][count - 2]) > 0) {
+                    goodData.push({
+                        artist: result[i][1],
+                        title: result[i][0],
+                        thisWeek: parseInt(result[i][count - 2]),
+                        lastWeek: parseInt(result[i][count - 4])
+                    });
+                }
+            }
+            res.send(goodData);
         }
     });
 });

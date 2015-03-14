@@ -3,18 +3,19 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>This Week</th>
-            <th>Last Week</th>
+            <th>This Week Position</th>
+            <th>Last Week Point Total</th>
             <th>Artist</th>
             <th>Song</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="song in songs">
-            <td>dainty</td>
-            <td>fingers</td>
-            <td>{{song[1]}}</td>
-            <td>{{song[0]}}</td>
+        <tr ng-repeat="song in songs track by $index | orderBy: '-thisWeek'" ng-if="song.thisWeek > 0">
+            <td>{{$index + 1}}</td>
+            <td ng-if="song.lastWeek > 0">{{song.lastWeek}}</td>
+            <td ng-if="song.lastWeek < 1">-</td>
+            <td>{{song.artist}}</td>
+            <td>{{song.title}}</td>
         </tr>
     </tbody>
 </table>
