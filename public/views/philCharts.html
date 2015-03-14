@@ -1,0 +1,21 @@
+<h2>Phil Charts</h2>
+<select id="chart-list" class="form-control chart-select" ng-options="chart.name for chart in chartList" ng-model="selectedChart" ng-change="getChart()"></select>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>This Week Position</th>
+            <th>Last Week Point Total</th>
+            <th>Artist</th>
+            <th>Song</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="song in songs track by $index | orderBy: '-thisWeek'" ng-if="song.thisWeek > 0">
+            <td>{{$index + 1}}</td>
+            <td ng-if="song.lastWeek > 0">{{song.lastWeek}}</td>
+            <td ng-if="song.lastWeek < 1">-</td>
+            <td>{{song.artist}}</td>
+            <td>{{song.title}}</td>
+        </tr>
+    </tbody>
+</table>

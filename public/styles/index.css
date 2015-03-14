@@ -1,3 +1,5 @@
-.social-badge {
-    padding: 10px 3px !important;
+@media (min-width: 992px) {
+    .chart-select {
+        max-width: 15%;
+    }
 }
